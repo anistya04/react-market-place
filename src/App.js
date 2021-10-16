@@ -1,11 +1,23 @@
 import 'assets/css/app.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import HomePage from 'pages/HomePage';
+import Details from 'pages/Details';
+import Cart from 'pages/Cart';
+import Congratulation from 'pages/Congratulation';
+import PageNotFound from 'pages/PageNotFound';
 
 function App() {
   return (
     <div className="App">
-      <header className="w-full text-center bg-green-300">
-        <p className="text-sm font-semibold">hello</p>
-      </header>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/categories/:idc" component={Details} />
+          <Route path="/cart" component={Cart} />
+          <Route path="/success" component={Congratulation} />
+          <Route path="*" component={PageNotFound} />
+        </Switch>
+      </Router>
     </div>
   );
 }
